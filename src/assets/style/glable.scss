@@ -1,0 +1,6 @@
+// 全局公共样式
+
+@import './variable.scss';
+body {
+    background-color: $main_background_color;
+}

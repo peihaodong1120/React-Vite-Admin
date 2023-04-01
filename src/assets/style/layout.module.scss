@@ -1,0 +1,9 @@
+// react中，样式模块化，在文件名中添加 module。类似vue中的scoped
+.main_sider {
+    overflow: 'auto';
+    height: '100vh';
+    position: 'fixed';
+    left: 0;
+    top: 0;
+    bottom: 0; 
+}
