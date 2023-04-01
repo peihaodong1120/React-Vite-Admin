@@ -4,3 +4,7 @@
 body {
     background-color: $main_background_color;
 }
+html,body,#root, .App{
+    height: 100%;
+    overflow: hidden;
+}

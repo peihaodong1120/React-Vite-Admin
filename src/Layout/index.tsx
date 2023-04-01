@@ -1,74 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Layout, Menu, theme } from 'antd';
+import { Layout, Menu, theme, Tabs } from 'antd';
+import NavTabs from './components/navTabs';
+import style from '@/assets/style/layout.module.scss'
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Sider, Content } = Layout;
 
-const items: MenuProps['items'] = [
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  AppstoreOutlined,
-  TeamOutlined,
-  ShopOutlined,
-].map((icon, index) => ({
-  key: String(index + 1),
-  icon: React.createElement(icon),
-  label: `nav ${index + 1}`,
-}));
-
-const MainLayoutL: React.FC = () => {
+const App: React.FC = () => {
+  const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
   return (
-    <Layout hasSider>
-      <Sider
-        style={{
-          overflow: 'auto',
-          height: '100vh',
-          position: 'fixed',
-          left: 0,
-          top: 0,
-          bottom: 0,
-        }}
-      >
-        <div style={{ height: 32, margin: 16, background: 'rgba(255, 255, 255, 0.2)' }} />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
-      </Sider>
-      <Layout className="site-layout" style={{ marginLeft: 200 }}>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
-        <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
-          <div style={{ padding: 24, textAlign: 'center', background: colorBgContainer }}>
-            <p>long content</p>
+    <Layout style={{height: '100%'}}>
+        {/* 左侧导航 */}
+      <Sider trigger={null} collapsible collapsed={collapsed}>
+        <div className={style.logo} />
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={['1']}
+          items={[
             {
-              // indicates very long content
-              Array.from({ length: 100 }, (_, index) => (
-                <React.Fragment key={index}>
-                  {index % 20 === 0 && index ? 'more' : '...'}
-                  <br />
-                </React.Fragment>
-              ))
-            }
+              key: '1',
+              icon: <UserOutlined />,
+              label: 'nav 1',
+            },
+            {
+              key: '2',
+              icon: <VideoCameraOutlined />,
+              label: 'nav 2',
+            },
+            {
+              key: '3',
+              icon: <UploadOutlined />,
+              label: 'nav 3',
+            },
+          ]}
+        />
+      </Sider>
+      {/* 右侧内容 */}
+      <Layout className="site-layout">
+        {/* 头部 */}
+        <Header style={{ padding: 0, background: colorBgContainer }}>
+        {/* 头部图标 */}
+          <div>
+            {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                className: style.trigger,
+                onClick: () => setCollapsed(!collapsed),
+            })}
           </div>
+        </Header>
+        <NavTabs></NavTabs>
+        {/* 页面内容 */}
+        <Content
+          style={{
+            margin: '24px 16px',
+            padding: 24,
+            minHeight: 280,
+            background: colorBgContainer,
+          }}
+        >
+          {/* 页面的具体内容 */}
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
       </Layout>
     </Layout>
   );
 };
 
-export default MainLayoutL;
+export default App;
