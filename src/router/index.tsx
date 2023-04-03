@@ -6,6 +6,8 @@ const Home = lazy(()=>import('@/views/Home'))
 const About = lazy(()=>import('@/views/About'))
 const Admin1 = lazy(()=>import('@/views/Admin/Admin1'))
 const Admin2 = lazy(()=>import('@/views/Admin/Admin2'))
+const System1 = lazy(()=>import('@/views/System/System1'))
+const System2 = lazy(()=>import('@/views/System/System2'))
 
 import MainLayout from '@/Layout/index'
 import Loading from '@/components/Loading'
@@ -40,12 +42,20 @@ const routers = [
                 element: lazyComponent(<About/>)
             },
             {
-                path:'/admin1',
+                path:'/admin/admin1',
                 element: lazyComponent(<Admin1/>)
             },
             {
-                path:'/admin2',
+                path:'/admin/admin2',
                 element: lazyComponent(<Admin2/>)
+            },
+            {
+                path:'/system/system1',
+                element: lazyComponent(<System1/>)
+            },
+            {
+                path:'/system/system2',
+                element: lazyComponent(<System2/>)
             }
         ]
     },
