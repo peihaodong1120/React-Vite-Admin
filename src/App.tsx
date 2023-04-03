@@ -1,9 +1,8 @@
 // import { useState } from 'react'
-import {useRoutes, Link} from 'react-router-dom'
+import {useRoutes} from 'react-router-dom'
 import routers from './router'
 
 function App() {
-
   const outlet = useRoutes(routers)
   return (
     <div className="App">

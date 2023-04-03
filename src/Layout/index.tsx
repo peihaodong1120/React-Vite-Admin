@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
+import {Outlet} from 'react-router-dom'
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu, theme, Tabs } from 'antd';
+import { Layout, theme } from 'antd';
 import NavTabs from './components/navTabs';
+import SiderMenu from './components/menu';
 import style from '@/assets/style/layout.module.scss'
 
 const { Header, Sider, Content } = Layout;
@@ -23,28 +22,7 @@ const App: React.FC = () => {
         {/* 左侧导航 */}
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className={style.logo} />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: <UserOutlined />,
-              label: 'nav 1',
-            },
-            {
-              key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'nav 2',
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
-            },
-          ]}
-        />
+        <SiderMenu></SiderMenu>
       </Sider>
       {/* 右侧内容 */}
       <Layout className="site-layout">
@@ -69,6 +47,7 @@ const App: React.FC = () => {
           }}
         >
           {/* 页面的具体内容 */}
+          <Outlet />
         </Content>
       </Layout>
     </Layout>
