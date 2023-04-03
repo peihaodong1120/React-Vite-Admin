@@ -21,9 +21,9 @@ import {BrowserRouter} from 'react-router-dom'
 // 主组件， 编程式路由写法
 import App from './App'
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 )

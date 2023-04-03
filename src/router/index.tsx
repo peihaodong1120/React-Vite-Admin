@@ -7,7 +7,7 @@ const About = lazy(()=>import('@/views/About'))
 const Admin1 = lazy(()=>import('@/views/Admin/Admin1'))
 const Admin2 = lazy(()=>import('@/views/Admin/Admin2'))
 const System1 = lazy(()=>import('@/views/System/System1'))
-const System2 = lazy(()=>import('@/views/System/System2'))
+const Page2 = lazy(()=>import('@/views/System/System2-Page'))
 
 import MainLayout from '@/Layout/index'
 import Loading from '@/components/Loading'
@@ -54,8 +54,8 @@ const routers = [
                 element: lazyComponent(<System1/>)
             },
             {
-                path:'/system/system2',
-                element: lazyComponent(<System2/>)
+                path:'/system/system2/Page2-1',
+                element: lazyComponent(<Page2/>)
             }
         ]
     },
