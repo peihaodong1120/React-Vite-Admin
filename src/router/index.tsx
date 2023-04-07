@@ -11,6 +11,7 @@ const Page2 = lazy(()=>import('@/views/System/System2-Page'))
 
 import MainLayout from '@/Layout/index'
 import Loading from '@/components/Loading'
+import Login from '@/views/Login'
 
 
 
@@ -59,6 +60,14 @@ const routers = [
             }
         ]
     },
+    {
+        path:'/login',
+        element: <Login /> // 登陆页面
+    },
+    {
+        path: '*',  // 非配置路由的其他页面，全部去home页面
+        element: <Navigate to={'/home'}/> // 路由重定向
+    }
 ]
 
 
